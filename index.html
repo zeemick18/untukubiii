@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Untuk Ubiii — Dari Ndut 💌</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+      /* --- GLOBAL RESET & BASE --- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      body,
+      html {
+        height: 100%;
+        margin: 0;
+        /* PERBAIKAN: Memastikan font Poppins dimuat */
+        font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        background: #0b0d1a;
+        overflow: hidden;
+        color: white;
+      }
+
+      /* ====== HALAMAN PEMBUKA ====== */
+      #introPage {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle at top left, #ff5c7a22, #0b0d1a 60%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        transition: opacity 1s ease;
+        z-index: 10;
+      }
+
+      #introPage h1 {
+        font-size: 28px;
+        margin-bottom: 16px;
+        animation: fadeIn 2s ease;
+      }
+
+      #introPage p {
+        opacity: 0.9;
+        max-width: 320px;
+        margin-bottom: 28px;
+        animation: fadeIn 3s ease;
+      }
+
+      #startBtn {
+        padding: 12px 22px;
+        font-size: 16px;
+        background: linear-gradient(90deg, #ff6b81, #ff9aa2);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        box-shadow: 0 4px 20px rgba(255, 86, 120, 0.3);
+        transition: transform 0.2s ease;
+      }
+      #startBtn:hover {
+        transform: scale(1.05);
+      }
+      #startBtn:active {
+        transform: scale(0.97);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ====== HALAMAN UTAMA ====== */
+      #mainPage {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 1s ease;
+      }
+
+      .wrap {
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 32px;
+        background: radial-gradient(
+            ellipse at top left,
+            rgba(255, 86, 120, 0.06),
+            transparent 20%
+          ),
+          radial-gradient(
+            ellipse at bottom right,
+            rgba(79, 70, 229, 0.04),
+            transparent 20%
+          ),
+          linear-gradient(180deg, #0b0d1a 0%, #101326 60%, #15162a 100%);
+      }
+
+      .card {
+        position: relative;
+        width: 100%;
+        max-width: 920px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.04),
+          rgba(255, 255, 255, 0.02)
+        );
+        border-radius: 18px;
+        padding: 36px;
+        box-shadow: 0 10px 40px rgba(2, 6, 23, 0.6);
+        overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        color: #fafafa;
+      }
+
+      .header {
+        display: flex;
+        gap: 20px;
+        align-items: center;
+      }
+      .avatar {
+        width: 96px;
+        height: 96px;
+        border-radius: 50%;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(255, 86, 120, 0.3);
+      }
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .title h1 {
+        margin: 0;
+        font-size: 26px;
+      }
+      .content {
+        display: flex;
+        gap: 28px;
+        margin-top: 26px;
+      }
+      .left {
+        flex: 1.1;
+      }
+      .typing {
+        font-size: 20px;
+        min-height: 100px;
+        margin-bottom: 18px;
+        color: #ffeef3;
+        font-weight: 600;
+      }
+      .subtext {
+        font-size: 15px;
+        opacity: 0.95;
+        line-height: 25px;
+        letter-spacing: 0.7px;
+      }
+
+      .right {
+        width: 320px;
+        max-width: 36%;
+        min-width: 220px;
+        border-radius: 12px;
+        padding: 18px;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.02),
+          rgba(255, 255, 255, 0.01)
+        );
+        border: 1px solid rgba(255, 255, 255, 0.03);
+      }
+
+      .btn {
+        border: 0;
+        padding: 10px 14px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 700;
+        font-size: 14px;
+        transition: transform 0.14s ease;
+      }
+      .btn:active {
+        transform: translateY(1px);
+      }
+      .btn-play {
+        background: linear-gradient(90deg, #ff6b81, #ff9aa2);
+        color: white;
+        box-shadow: 0 8px 24px rgba(255, 86, 120, 0.14);
+      }
+      .btn-secondary {
+        background: transparent;
+        color: #dfe7ff;
+        border: 1px solid rgba(255, 255, 255, 0.04);
+      }
+
+      /* Foto slideshow */
+      .slideshow {
+        width: 100%;
+        height: 220px;
+        border-radius: 12px;
+        overflow: hidden;
+        position: relative;
+        margin-top: 16px;
+      }
+      .slideshow img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 1.5s ease-in-out;
+        background: #000;
+      }
+      .slideshow img.active {
+        opacity: 1;
+      }
+      
+      /* ====== MEDIA QUERIES UNTUK RESPONSIVITAS ANDROID/MOBILE ====== */
+      /* Memastikan ukuran tetap baik di layar sempit */
+      @media (max-width: 768px) {
+        .wrap {
+          padding: 20px; /* Kurangi padding utama */
+        }
+        .card {
+          padding: 24px; /* Kurangi padding kartu */
+        }
+        .header {
+            /* Tumpuk elemen header */
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 12px;
+        }
+        .title h1 {
+            font-size: 24px;
+        }
+        .avatar {
+            width: 80px;
+            height: 80px;
+        }
+        .content {
+            /* Tumpuk kolom kiri dan kanan */
+            flex-direction: column;
+            gap: 20px;
+        }
+        .right {
+            width: 100%; /* Sidebar mengambil lebar penuh */
+            max-width: none;
+            min-width: unset;
+        }
+        .typing {
+            font-size: 18px; /* Ukuran font typing lebih kecil */
+            min-height: 80px;
+        }
+        .subtext {
+            font-size: 14px;
+            line-height: 22px;
+            letter-spacing: 0.5px;
+        }
+        .slideshow {
+            height: 160px; /* Sesuaikan tinggi slideshow untuk mobile */
+        }
+      }
+      
+    </style>
+  </head>
+
+  <body>
+    <div id="introPage">
+      <h1>Hai Ubiii 🤍</h1>
+      <p>
+        Ada sesuatu yang pengen Ndut sampein buat kamu...<br />tapi tolong baca
+        sampai selesai ya 🥺
+      </p>
+      <button id="startBtn">Buka Surat dari Ndut 💌</button>
+    </div>
+
+    <div id="mainPage">
+      <div class="wrap">
+        <div class="card">
+          <div class="header">
+            <div class="avatar">
+              <img src="./images/ubiiindut5.jpg" alt="Foto Ndut" />
+            </div>
+            <div class="title">
+              <h1>Untuk Ubiii</h1>
+              <p>Dudut pengen minta maaf.</p>
+            </div>
+          </div>
+
+          <div class="content">
+            <div class="left">
+              <div class="typing" id="typing"></div>
+              <div class="subtext">
+                <p style="margin: 0px 0;">
+                  <strong
+                    >sayanggg dudut minta maaf buat semua kesalahan aku buat, dudutt sangat amat menyesal, aku minta maaf udah bikin kamu kecewa, aku belajar kalo hal yang kita pengen tapi didapat dari cara yang salah itu ga akan buat kita bahagia, entahlah dulu aku kalo ngeliat orang pacaran bawa motor sport aku iri, tapi sekarang justru aku iri liat mereka yang naik motor sederhana saling ngobrol dimotor, sekarang kalo ngeliat motor ini rasanya sakit, sekarang aku sadar bahagia aku bukan tentang apa yang aku pengen tapi apa yang aku perluin, dan ternyata yang aku perluin itu kamu sayanggg, sekarang aku udh hilang kebahagiaan, bahagia aku dikamu, maaf kalo aku selalu mengambil keputusan sendiri, aku bener" nyesel, ternyata tampil keren itu ga buat kamu bahagia, aku coba buat cari vario aku lagi karna itu motor pertama aku jemput kerumah kamu, jalan sama kamu, hujan"an sama kamu, aku bener" nyesal sayanggg, tapi ini bukan tentang motor, ini tentang kesalahan aku keinginan aku yang ngebuat aku kehilangan kebahagiaan, izinin aku buat mulai lagi&nbsp;sama&nbsp;kamu🤍
+</strong
+                  >
+                </p>
+              </div>
+            </div>
+            
+
+            <div class="right">
+              <h3 style="margin: 0 0 8px 0">My Hope</h3>
+              <p style="margin: 0 0 10px 0; opacity: 0.95">
+                Aku berharap kita bisa bersama lagi, saling menemani sampai tujuan yang sama, aamiin
+              </p>
+
+              <div style="display: flex; gap: 10px; margin-top: 12px">
+                <button class="btn btn-play" id="forgiveBtn" style="flex: 1">
+                  Aku maafin kamu ❤
+                </button>
+                <button
+                  class="btn btn-secondary"
+                  id="messageBtn"
+                  style="flex: 1"
+                >
+                  Kirim Pesan
+                </button>
+              </div>
+
+              <div class="slideshow" id="slideshow">
+                <img src="./images/ubiiindut.jpg" class="active" />
+                <img src="./images/ubiiindut6.jpg" />
+                <img src="./images/ubiiindut7.jpg" />
+                <img src="./images/ubiiindut4.jpg" />
+                <img src="./images/ubiiindut8.jpg" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <audio id="bgMusic" autoplay loop>
+        <source src="./music/janji-setia.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+
+    <script>
+      const introPage = document.getElementById("introPage");
+      const mainPage = document.getElementById("mainPage");
+      const music = document.getElementById("bgMusic");
+
+      // Tombol mulai
+      document.getElementById("startBtn").addEventListener("click", () => {
+        introPage.style.opacity = "0";
+        setTimeout(() => {
+          introPage.style.display = "none";
+          mainPage.style.opacity = "1";
+          mainPage.style.pointerEvents = "auto";
+          // PERBAIKAN: Gunakan promise untuk menangani autoplay
+          music.play().catch(error => {
+            console.log("Autoplay ditolak:", error);
+            // Anda bisa menampilkan tombol 'putar musik' di sini jika perlu
+          });
+        }, 1000);
+      });
+
+      // Efek ngetik
+      const lines = [
+        "Ubiii... maafin Ndut ya.",
+        "Aku bener-bener nyesel dan pengen perbaikin semuanya.",
+      ];
+      const typingEl = document.getElementById("typing");
+      let lineIndex = 0,
+        charIndex = 0;
+      function typeNext() {
+        if (lineIndex >= lines.length) return;
+        const current = lines[lineIndex];
+        if (charIndex <= current.length) {
+          typingEl.innerHTML =
+            current.slice(0, charIndex) + '<span style="opacity:0.6">|</span>';
+          charIndex++;
+          setTimeout(typeNext, 40 + Math.random() * 60);
+        } else {
+          typingEl.innerHTML = current;
+          lineIndex++;
+          charIndex = 0;
+          setTimeout(() => {
+            if (lineIndex < lines.length) {
+              typingEl.innerHTML += "<br><br>";
+              setTimeout(typeNext, 600);
+            }
+          }, 800);
+        }
+      }
+      
+      // Hanya jalankan fungsi typeNext setelah halaman utama ditampilkan
+      // Panggil saat tombol start diklik jika Anda ingin efek muncul saat itu.
+      // Untuk saat ini, fungsi akan dipanggil langsung.
+      setTimeout(typeNext, 1000); // Tunda sedikit agar efek lebih smooth
+
+      // Tombol interaksi
+      const forgiveBtn = document.getElementById("forgiveBtn");
+      const messageBtn = document.getElementById("messageBtn");
+      forgiveBtn.addEventListener("click", () => {
+        forgiveBtn.innerText = "Terima kasih ❤";
+        forgiveBtn.disabled = true;
+        // Opsional: ganti warna tombol secondary
+        messageBtn.classList.remove('btn-secondary');
+        messageBtn.style.background = '#ff6b81';
+        messageBtn.style.color = 'white';
+
+        if (navigator.vibrate) navigator.vibrate([30, 20, 30]);
+      });
+      messageBtn.addEventListener("click", () => {
+        const wa = `https://wa.me/?text=${encodeURIComponent(
+          "iyaaa aku maafin, tapi kamu janji ga ngulangin lagi yaa🤍"
+        )}`;
+        window.open(wa, "_blank");
+      });
+
+      // Slideshow logic
+      const slides = document.querySelectorAll(".slideshow img");
+      let current = 0;
+      // Panggil fungsi slideshow setelah halaman utama muncul agar gambar tidak blank
+      function startSlideshow() {
+          setInterval(() => {
+            // Cek apakah slides[current] ada sebelum mencoba mengaksesnya
+            if (slides[current]) {
+                slides[current].classList.remove("active");
+            }
+            current = (current + 1) % slides.length;
+            if (slides[current]) {
+                slides[current].classList.add("active");
+            }
+          }, 3500);
+      }
+      
+      // Panggil slideshow saat tombol start diklik
+      document.getElementById("startBtn").addEventListener("click", startSlideshow);
+    </script>
+  </body>
+</html>
